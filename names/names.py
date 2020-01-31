@@ -1,4 +1,7 @@
 import time
+from doubly_linked_list import DoublyLinkedList
+from dll_stack import Stack
+from dll_queue import Queue
 
 start_time = time.time()
 
@@ -11,14 +14,28 @@ names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
 duplicates = []
-for name_1 in names_1:
-    for name_2 in names_2:
-        if name_1 == name_2:
-            duplicates.append(name_1)
+# for name_1 in names_1:
+#     for name_2 in names_2:
+#         if name_1 == name_2:
+#             duplicates.append(name_1)
+
+# Runtime: O(n)
+
+storage = DoublyLinkedList()
+for name in names_1:
+    if name[0] <= "M":
+        storage.add_to_head(name)
+for name in names_2:
+    if name[0] >= "N":
+        storage.add_to_tail(name)
+print(storage.length)
+
+# for x in range(0, storage.length)
+
 
 end_time = time.time()
-print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
-print (f"runtime: {end_time - start_time} seconds")
+print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
+print(f"runtime: {end_time - start_time} seconds")
 
 # ---------- Stretch Goal -----------
 # Python has built-in tools that allow for a very efficient approach to this problem
