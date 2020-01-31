@@ -24,6 +24,7 @@ class RingBuffer:
         for x in range(0, self.storage.length):
             y = self.storage.remove_from_head()
             list_buffer_contents.append(y)
+            self.current = list_buffer_contents[0]
             print(list_buffer_contents)
         for z in list_buffer_contents:
             # print(z)

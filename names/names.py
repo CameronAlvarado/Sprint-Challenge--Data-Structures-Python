@@ -23,12 +23,10 @@ duplicates = []
 
 storage = DoublyLinkedList()
 for name in names_1:
-    if name[0] <= "M":
-        storage.add_to_head(name)
+    storage.add_to_head(name)
 for name in names_2:
-    if name[0] >= "N":
-        storage.add_to_tail(name)
-print(storage.length)
+    storage.add_to_tail(name)
+print(storage)
 
 # for x in range(0, storage.length)
 
