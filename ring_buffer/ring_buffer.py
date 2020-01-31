@@ -9,6 +9,7 @@ class RingBuffer:
 
     def append(self, item):
         if self.storage.length is self.capacity:
+            self.current = 0
             self.storage.remove_from_tail()
         self.storage.add_to_tail(item)
 
