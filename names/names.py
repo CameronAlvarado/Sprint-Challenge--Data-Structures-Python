@@ -1,7 +1,5 @@
 import time
-from doubly_linked_list import DoublyLinkedList
-from dll_stack import Stack
-from dll_queue import Queue
+from binary_search_tree import BinarySearchTree
 
 start_time = time.time()
 
@@ -13,22 +11,25 @@ f = open('names_2.txt', 'r')
 names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
-duplicates = []
 # for name_1 in names_1:
 #     for name_2 in names_2:
 #         if name_1 == name_2:
 #             duplicates.append(name_1)
 
-# Runtime: O(n)
+# ^^^ Runtime: O(n^2) ^^^
 
-storage = DoublyLinkedList()
-for name in names_1:
-    storage.add_to_head(name)
+duplicates = []
+bst = BinarySearchTree(names_1[0])
+
+# O(n)
+for name in names_1[1:]:
+    bst.insert(name)
+
+# O(n)
 for name in names_2:
-    storage.add_to_tail(name)
-print(storage)
-
-# for x in range(0, storage.length)
+    # O(n*log(n))
+    if bst.contains(name):
+        duplicates.append(name)
 
 
 end_time = time.time()

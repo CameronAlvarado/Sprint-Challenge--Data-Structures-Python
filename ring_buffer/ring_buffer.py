@@ -11,8 +11,10 @@ class RingBuffer:
         if self.storage.length is self.capacity:
             self.storage.remove_from_tail()
             self.storage.add_to_tail(item)
-
+            if self.current is self.storage.tail:
+                self.current = self.storage.head
         else:
+            self.current = self.storage.head
             self.storage.add_to_head(item)
 
         return True
@@ -25,11 +27,8 @@ class RingBuffer:
         for x in range(0, self.storage.length):
             y = self.storage.remove_from_tail()
             list_buffer_contents.append(y)
-            self.current = list_buffer_contents[-1]
-            print(self.current)
-            # print(list_buffer_contents)
+            print(list_buffer_contents)
         for z in list_buffer_contents:
-            # print(z)
             self.storage.add_to_head(z)
 
         return list_buffer_contents
