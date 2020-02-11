@@ -18,19 +18,26 @@ f.close()
 
 # ^^^ Runtime: O(n^2) ^^^
 
+
 duplicates = []
-bst = BinarySearchTree(names_1[0])
+# bst = BinarySearchTree(names_1[0])
 
-# O(n)
-for name in names_1[1:]:
-    bst.insert(name)
+# # O(n)
+# for name in names_1[1:]:
+#     bst.insert(name)
 
-# O(n)
-for name in names_2:
-    # O(n*log(n))
-    if bst.contains(name):
-        duplicates.append(name)
+# # O(n)
+# for name in names_2:
+#     # O(n*log(n))
+#     if bst.contains(name):
+#         duplicates.append(name)
 
+# create sets from names
+set1 = set(names_1)
+set2 = set(names_2)
+
+# run intersection method to return duplicates
+duplicates = set1.intersection(set2)
 
 end_time = time.time()
 print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
