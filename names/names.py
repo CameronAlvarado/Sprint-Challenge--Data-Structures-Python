@@ -32,6 +32,8 @@ duplicates = []
 #     if bst.contains(name):
 #         duplicates.append(name)
 
+
+# A set is a dict with only keys
 # create sets from names
 set1 = set(names_1)
 set2 = set(names_2)
